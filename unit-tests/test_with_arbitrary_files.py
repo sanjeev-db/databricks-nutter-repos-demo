@@ -22,7 +22,7 @@ class TestFixtureArbitraryFiles(NutterFixture):
   def __init__(self):
     self.code2_table_name = "my_data"
     self.code1_view_name = "my_cool_data"
-    self.code1_num_entries = 100
+    self.code1_num_entries = 200
     NutterFixture.__init__(self)
     
   def run_code1_arbitrary_files(self):
@@ -30,7 +30,7 @@ class TestFixtureArbitraryFiles(NutterFixture):
     
   def assertion_code1_arbitrary_files(self):
     df = spark.read.table(self.code1_view_name)
-    assert(df.count() == self.code1_num_entries)
+    assert(df.count() == 200)
     
   def run_code2_arbitrary_files(self):
     generate_data2(table_name = self.code2_table_name)
