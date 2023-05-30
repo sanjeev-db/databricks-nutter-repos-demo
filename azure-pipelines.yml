@@ -86,6 +86,15 @@ stages:
         DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
       displayName: 'Execute Nutter tests'
 
+    - script: |
+        echo "Deploying Workflow job"
+        # This is not tested. Placed as an example.
+        # databricks jobs create --json-file "$(STAGING_DIRECTORY)/workflow-job/workflow-job.json"
+      env:
+        DATABRICKS_HOST: $(DATABRICKS_HOST)
+        DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
+      displayName: 'Deploy Workflow Job'  
+
     - task: PublishTestResults@2
       condition: succeededOrFailed()
       inputs:
